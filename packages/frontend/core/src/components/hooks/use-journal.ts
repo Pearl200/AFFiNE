@@ -27,6 +27,7 @@ export const useJournalHelper = (docCollection: DocCollection) => {
   const bsWorkspaceHelper = useDocCollectionHelper(docCollection);
   const docsService = useService(DocsService);
   const adapter = useCurrentWorkspacePropertiesAdapter();
+  const { isPageJournal } = useJournalInfoHelper();
 
   /**
    * @internal
@@ -51,13 +52,6 @@ export const useJournalHelper = (docCollection: DocCollection) => {
       return page;
     },
     [adapter, bsWorkspaceHelper, docsService.list]
-  );
-
-  const isPageJournal = useCallback(
-    (pageId: string) => {
-      return !!adapter.getJournalPageDateString(pageId);
-    },
-    [adapter]
   );
 
   /**
@@ -90,31 +84,6 @@ export const useJournalHelper = (docCollection: DocCollection) => {
     [_createJournal, getJournalsByDate]
   );
 
-  const isPageTodayJournal = useCallback(
-    (pageId: string) => {
-      const date = dayjs().format(JOURNAL_DATE_FORMAT);
-      const d = adapter.getJournalPageDateString(pageId);
-      return isPageJournal(pageId) && d === date;
-    },
-    [adapter, isPageJournal]
-  );
-
-  const getJournalDateString = useCallback(
-    (pageId: string) => {
-      return adapter.getJournalPageDateString(pageId);
-    },
-    [adapter]
-  );
-
-  const getLocalizedJournalDateString = useCallback(
-    (pageId: string) => {
-      const journalDateString = getJournalDateString(pageId);
-      if (!journalDateString) return null;
-      return i18nTime(journalDateString, { absolute: { accuracy: 'day' } });
-    },
-    [getJournalDateString]
-  );
-
   const appendContentToToday = useCallback(
     async (content: string) => {
       if (!content) return;
@@ -134,21 +103,9 @@ export const useJournalHelper = (docCollection: DocCollection) => {
     () => ({
       getJournalsByDate,
       getJournalByDate,
-      getJournalDateString,
-      getLocalizedJournalDateString,
-      isPageJournal,
-      isPageTodayJournal,
       appendContentToToday,
     }),
-    [
-      getJournalsByDate,
-      getJournalByDate,
-      getJournalDateString,
-      getLocalizedJournalDateString,
-      isPageJournal,
-      isPageTodayJournal,
-      appendContentToToday,
-    ]
+    [getJournalsByDate, getJournalByDate, appendContentToToday]
   );
 };
 
@@ -193,16 +150,41 @@ export const useJournalRouteHelper = (docCollection: DocCollection) => {
   );
 };
 
-export const useJournalInfoHelper = (
-  docCollection: DocCollection,
-  pageId?: string | null
-) => {
-  const {
-    isPageJournal,
-    getJournalDateString,
-    getLocalizedJournalDateString,
-    isPageTodayJournal,
-  } = useJournalHelper(docCollection);
+// get journal info that don't rely on `docCollection`
+export const useJournalInfoHelper = (pageId?: string | null) => {
+  const adapter = useCurrentWorkspacePropertiesAdapter();
+
+  const isPageJournal = useCallback(
+    (pageId: string) => {
+      return !!adapter.getJournalPageDateString(pageId);
+    },
+    [adapter]
+  );
+
+  const isPageTodayJournal = useCallback(
+    (pageId: string) => {
+      const date = dayjs().format(JOURNAL_DATE_FORMAT);
+      const d = adapter.getJournalPageDateString(pageId);
+      return isPageJournal(pageId) && d === date;
+    },
+    [adapter, isPageJournal]
+  );
+
+  const getJournalDateString = useCallback(
+    (pageId: string) => {
+      return adapter.getJournalPageDateString(pageId);
+    },
+    [adapter]
+  );
+
+  const getLocalizedJournalDateString = useCallback(
+    (pageId: string) => {
+      const journalDateString = getJournalDateString(pageId);
+      if (!journalDateString) return null;
+      return i18nTime(journalDateString, { absolute: { accuracy: 'day' } });
+    },
+    [getJournalDateString]
+  );
 
   return useMemo(
     () => ({
@@ -212,6 +194,10 @@ export const useJournalInfoHelper = (
         ? getLocalizedJournalDateString(pageId)
         : null,
       isTodayJournal: pageId ? isPageTodayJournal(pageId) : false,
+      isPageJournal,
+      isPageTodayJournal,
+      getJournalDateString,
+      getLocalizedJournalDateString,
     }),
     [
       getJournalDateString,
