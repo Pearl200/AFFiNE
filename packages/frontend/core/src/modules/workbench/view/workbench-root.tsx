@@ -1,5 +1,6 @@
 import { ResizePanel } from '@affine/component/resize-panel';
 import { rightSidebarWidthAtom } from '@affine/core/atoms';
+import { AffineErrorComponent } from '@affine/core/components/affine/affine-error-boundary/affine-error-fallback';
 import { viewRoutes } from '@affine/core/router';
 import {
   appSettingAtom,
@@ -97,6 +98,7 @@ const WorkbenchView = ({ view, index }: { view: View; index: number }) => {
     return [
       {
         element: <RouteContainer />,
+        errorElement: <AffineErrorComponent />,
         children: viewRoutes,
       },
     ] satisfies RouteObject[];

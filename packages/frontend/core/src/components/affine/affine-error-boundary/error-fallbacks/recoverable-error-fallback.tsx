@@ -35,6 +35,7 @@ export const RecoverableErrorFallback = createErrorFallback(
         buttonText={buttonDesc}
         onButtonClick={onRetry}
         description={[error.message, <ContactUS key="contact-us" />]}
+        error={error}
       />
     );
   }
