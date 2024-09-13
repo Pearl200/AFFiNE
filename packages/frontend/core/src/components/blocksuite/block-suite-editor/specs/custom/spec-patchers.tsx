@@ -497,10 +497,11 @@ export function patchEdgelessClipboard() {
 }
 
 @customElement('affine-linked-doc-ref-block')
-// @ts-expect-error ignore private warning for overriding _load
 export class LinkedDocBlockComponent extends EmbedLinkedDocBlockComponent {
-  override async _load() {
-    this.isBannerEmpty = true;
+  override resetState() {
+    return {
+      loading: false,
+    };
   }
 }
 
