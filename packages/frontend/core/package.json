@@ -3,6 +3,11 @@
   "type": "module",
   "private": true,
   "version": "0.16.0",
+  "sideEffects": [
+    "*.css",
+    "*.css.ts",
+    "./src/components/blocksuite/block-suite-editor/index.ts"
+  ],
   "exports": {
     "./*": "./src/*",
     "./bootstrap": "./src/bootstrap/index.ts"

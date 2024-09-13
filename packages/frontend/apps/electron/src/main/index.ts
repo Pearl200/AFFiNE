@@ -1,4 +1,4 @@
-import './security-restrictions';
+import './setup';
 
 import path from 'node:path';
 

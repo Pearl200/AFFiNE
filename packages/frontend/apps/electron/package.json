@@ -9,6 +9,14 @@
   },
   "description": "AFFiNE Desktop App",
   "homepage": "https://github.com/toeverything/AFFiNE",
+  "sideEffects": [
+    "*.css",
+    "*.css.ts",
+    "./src/main/setup.ts",
+    "./src/preload/index.ts",
+    "./renderer/setup.ts",
+    "./renderer/shell/setup.ts"
+  ],
   "scripts": {
     "start": "electron .",
     "dev": "DEV_SERVER_URL=http://localhost:8080 node --loader ts-node/esm/transpile-only ./scripts/dev.ts",

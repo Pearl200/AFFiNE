@@ -4,6 +4,11 @@
   "description": "AFFiNE Desktop Web application",
   "private": true,
   "browser": "src/index.tsx",
+  "sideEffects": [
+    "*.css",
+    "*.css.ts",
+    "./src/setup.ts"
+  ],
   "scripts": {
     "build": "cross-env DISTRIBUTION=web yarn workspace @affine/cli build",
     "dev": "yarn workspace @affine/cli dev",

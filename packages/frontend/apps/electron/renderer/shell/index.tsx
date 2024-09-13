@@ -1,6 +1,3 @@
-import '@affine/component/theme/global.css';
-import '@affine/component/theme/theme.css';
-import '../global.css';
 import './setup';
 
 import { ThemeProvider } from '@affine/component/theme-provider';
