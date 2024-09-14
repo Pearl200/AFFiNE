@@ -16,7 +16,6 @@
     "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-operations": "^4.2.0",
     "@types/lodash-es": "^4.17.12",
-    "prettier": "^3.2.5",
     "vitest": "2.1.0"
   },
   "scripts": {
@@ -26,8 +25,7 @@
     "@affine/env": "workspace:*",
     "graphql": "^16.8.1",
     "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "nanoid": "^5.0.7"
+    "lodash-es": "^4.17.21"
   },
   "installConfig": {
     "hoistingLimits": "workspaces"
