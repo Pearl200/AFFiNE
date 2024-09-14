@@ -65,11 +65,13 @@ AFFiNE is an open-source, all-in-one workspace and an operating system for all t
 
 **Multimodal AI partner ready to kick in any work**
 
-- Write up professional work report? Turn an outline into expressive and presentable slides? Summary an article into a well-structured mindmap? Sorting your job plan and backlog for tasks? Or... draw and code prototype apps and web pages directly all with one prompt? With you, AFFiNE AI pushes your creativity to the edge of your imagination.
+-Need to write a professional work report? Transform an outline into engaging, presentable slides? Summarize an article into a clear, structured mind map? Organize your job plan and backlog efficiently? Or even draw and code prototype apps and web pages—all with a single prompt? With AFFiNE AI, you can push the boundaries of your creativity and imagination.
+
 
 **Local-first & Real-time collaborative**
 
-- We love the idea of local-first that you always own your data on your disk, in spite of the cloud. Furthermore, AFFiNE supports real-time sync and collaborations on web and cross-platform clients.
+- We love the idea of "local-first," which means that you always own your data on your local disk, regardless of the cloud. Furthermore, AFFiNE supports real-time sync and collaboration across web and cross-platform clients.
+
 
 **Self-host & Shape your own AFFiNE**
 
@@ -87,7 +89,7 @@ AFFiNE is an open-source, all-in-one workspace and an operating system for all t
 
 There is a large overlap of their atomic “building blocks” between these apps. They are not open source, nor do they have a plugin system like Vscode for contributors to customize. We want to have something that contains all the features we love and also goes one step even further.
 
-Thanks for checking us out, we appreciate your interest and sincerely hope that AFFiNE resonates with you! 🎵 Checking https://affine.pro/ for more details ions.
+Thanks for checking us out, we appreciate your interest and sincerely hope that AFFiNE resonates with you! 🎵 Checking https://affine.pro/ for more details .
 
 ## Contributing
 
